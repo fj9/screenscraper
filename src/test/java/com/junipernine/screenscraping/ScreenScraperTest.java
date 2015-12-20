@@ -7,10 +7,16 @@ import org.junit.Test;
  */
 public class ScreenScraperTest {
 
-    @Test
-    public void testName() throws Exception {
+    @Test (expected = ScraperException.class)
+    public void testBadURl() throws Exception, ScraperException {
         ScreenScraper scraper = new ScreenScraper();
-        scraper.doThing("");
-
+        scraper.scrape("http://junipernine.com");
     }
+
+    @Test (expected = ScraperException.class)
+    public void testMalformedURl() throws Exception, ScraperException {
+        ScreenScraper scraper = new ScreenScraper();
+        scraper.scrape("junipernine.com");
+    }
+
 }
